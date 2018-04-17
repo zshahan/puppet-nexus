@@ -8,7 +8,7 @@ class nexus::config {
   # Nexus 2.x config
   #
   if versioncmp($::nexus::version, '3.0.0') < 0 or $::nexus::version == 'latest' {
-    $nexus_config_file = "${::nexus::install_directory}/nexus/conf/nexus.properties"
+    $nexus_config_file = "${::nexus::data_directory}/nexus/conf/nexus.properties"
     contain ::nexus::config::v2
   }
 
@@ -16,7 +16,7 @@ class nexus::config {
   # Nexus 3.x config
   #
   else {
-    $nexus_config_file = "${::nexus::install_directory}/nexus/etc/org.sonatype.nexus.cfg"
+    $nexus_config_file = "${::nexus::data_directory}/etc/nexus.properties"
     contain ::nexus::config::v3
   }
 
